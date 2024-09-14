@@ -10,3 +10,4 @@ crate-type = ["rlib", "cdylib"]
 
 [dependencies]
 pyo3 = "0.22.0"
+roxmltree = "0.20.0"
