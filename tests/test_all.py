@@ -1,6 +1,6 @@
 import pytest
-import irspy
+import src
 
 
 def test_sum_as_string():
-    assert irspy.sum_as_string(1, 1) == "2"
+    assert src.sum_as_string(1, 1) == "2"

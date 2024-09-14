@@ -1,6 +1,6 @@
 # IRSpy
 
-`irspy` is the rust library to parse IRS 990 forms.
+`irspy` is the Python library to parse IRS 990 forms.
 
 `WIP` - work in progress
 
