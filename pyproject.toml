@@ -45,6 +45,9 @@ path = "src/irspy/__about__.py"
 [tool.hatch.build.targets.wheel]
 packages = ["src/irspy"]
 
+[tool.check-wheel-contents]
+toplevel = ["irspy"]
+
 
 ### PIXI   ###
 [tool.pixi.project]
@@ -60,12 +63,12 @@ irspy = { path = ".", editable = true }
 
 ###   Tasks   ###
 [tool.pixi.tasks]
-ruff_sort = "ruff check python/ --fix --select I"
-ruff_lint = "ruff check python/ python/tests/ --fix"
-ruff_fmt = "ruff format python/"
-pylint_lint = "pylint python/ python/tests/"
-type_check = "mypy python/ python/tests/"
-python_test = "pytest python/tests/"
+ruff_sort = "ruff check src/irspy/ tests/ --fix --select I"
+ruff_lint = "ruff check src/irspy/ tests/ --fix"
+ruff_fmt = "ruff format src/irspy/ tests/"
+pylint_lint = "pylint src/irspy/ tests/"
+type_check = "mypy src/irspy/ tests/"
+python_test = "pytest tests/"
 
 # Main Tasks
 lint = { depends_on = [
@@ -85,3 +88,4 @@ ruff = ">=0.6.4,<0.7"
 pylint = ">=3.2.7,<4"
 mypy = ">=1.11.2,<2"
 pytest = ">=8.3.2,<9"
+check-wheel-contents = ">=0.6.0,<0.7"
