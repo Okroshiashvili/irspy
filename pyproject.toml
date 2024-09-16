@@ -1,33 +1,48 @@
 [build-system]
-requires = ["maturin>=1.7,<2.0"]
-build-backend = "maturin"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
 [project]
-name = "pyirs"
+name = "irspy"
 requires-python = ">=3.8"
-description = "Python library to parse IRS 990 forms"
-authors = [
-  {name = "Nodar Okroshiashvili"},
-]
+description = "Python library to parse `IRS 990 Forms`"
+authors = [{ name = "Nodar Okroshiashvili" }]
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
-    "Programming Language :: Rust",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: Implementation :: CPython",
     "Programming Language :: Python :: Implementation :: PyPy",
+
 ]
-keywords = ["irs", "irs990", "irspython", "irs form 990", "990 data", "irs form 990 data"]
+keywords = [
+    "irs",
+    "irs990",
+    "irspython",
+    "irs form 990",
+    "990 data",
+    "irs form 990 data",
+]
 readme = "README.md"
-license = {text = "MIT License"}
+license = { text = "MIT License" }
 dynamic = ["version"]
 
 [project.urls]
-repository = "https://github.com/Okroshiashvili/irspy"
+GitHub = "https://github.com/Okroshiashvili/irspy"
+Documentation = "https://github.com/Okroshiashvili/irspy#readme"
+Issues = "https://github.com/Okroshiashvili/irspy/issues"
 
-[tool.maturin]
-python-source = "python"
-features = ["pyo3/extension-module"]
+[tool.hatch.version]
+path = "src/irspy/__about__.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/irspy"]
 
 
 ### PIXI   ###
@@ -38,15 +53,12 @@ platforms = ["osx-arm64", "linux-64", "win-64", "osx-64"]
 [tool.pixi.environments]
 default = { solve-group = "default" }
 
+[tool.pixi.pypi-dependencies]
+irspy = { path = ".", editable = true }
+
+
 ###   Tasks   ###
 [tool.pixi.tasks]
-
-# Cargo Tasks
-fmt = "cargo fmt"
-cargo_test = "cargo test"
-cargo_lint = { cmd = "cargo clippy", depends-on = ["fmt"] }
-
-# Python Tasks
 ruff_sort = "ruff check python/ --fix --select I"
 ruff_lint = "ruff check python/ python/tests/ --fix"
 ruff_fmt = "ruff format python/"
@@ -55,25 +67,17 @@ type_check = "mypy python/ python/tests/"
 python_test = "pytest python/tests/"
 
 # Main Tasks
-develop = "maturin develop"
-build = "maturin build --release"
 lint = { depends_on = [
     "ruff_sort",
     "ruff_lint",
     "ruff_fmt",
     "pylint_lint",
     "type_check",
-    "cargo_lint"
 ] }
-test = { depends_on = [
-    "cargo_test",
-    "python_test"
-] }
+test = { depends_on = ["python_test"] }
 
 ### Pixi Dependencies   ###
 [tool.pixi.dependencies]
-maturin = ">=1.7.1,<2"
-rust = ">=1.80.1,<2"
 python = ">=3.8,<4"
 pip = ">=24.2,<25"
 ruff = ">=0.6.4,<0.7"
