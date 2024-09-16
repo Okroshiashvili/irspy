@@ -53,6 +53,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/noarch/tzdata-2024a-h8827d51_1.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/wheel-0.44.0-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/xz-5.2.6-h166bdaf_0.tar.bz2
+      - pypi: https://files.pythonhosted.org/packages/63/88/e38f96103e1e63f8aed1431eac9d3d0e7923b4b0bf0aa5ee39665466ddc6/selectolax-0.3.21-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
       - pypi: .
       osx-64:
       - conda: https://conda.anaconda.org/conda-forge/osx-64/astroid-3.2.4-py312hb401068_0.conda
@@ -92,6 +93,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/noarch/tzdata-2024a-h8827d51_1.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/wheel-0.44.0-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-64/xz-5.2.6-h775f41a_0.tar.bz2
+      - pypi: https://files.pythonhosted.org/packages/23/34/f1c16a74c422b9991928d726e837f70ed26be4f06fb37dfbd6304a094b16/selectolax-0.3.21-cp312-cp312-macosx_10_9_x86_64.whl
       - pypi: .
       osx-arm64:
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/astroid-3.2.4-py312h81bd7bf_0.conda
@@ -131,6 +133,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/noarch/tzdata-2024a-h8827d51_1.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/wheel-0.44.0-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/xz-5.2.6-h57fd34a_0.tar.bz2
+      - pypi: https://files.pythonhosted.org/packages/a9/be/85dc69a88eb8f6b6c20968f6982bec1d4899325541939d43851b677f3bf6/selectolax-0.3.21-cp312-cp312-macosx_10_9_universal2.whl
       - pypi: .
       win-64:
       - conda: https://conda.anaconda.org/conda-forge/win-64/astroid-3.2.4-py312h2e8e312_0.conda
@@ -171,6 +174,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/win-64/vs2015_runtime-14.40.33810-h3bf8584_21.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/wheel-0.44.0-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/win-64/xz-5.2.6-h8d14728_0.tar.bz2
+      - pypi: https://files.pythonhosted.org/packages/01/15/a3df57f402ea9958a1c965302531e756a32ce74fcdd890068f2e105717c7/selectolax-0.3.21-cp312-cp312-win_amd64.whl
       - pypi: .
 packages:
 - kind: conda
@@ -459,7 +463,9 @@ packages:
   name: irspy
   version: 0.0.1
   path: .
-  sha256: 83b077560f5093b48c9ee011675b857ed98e91c48a704190d849788f957971bb
+  sha256: 56457be122241d48e18a04cb3dadeb640dab9bf0697622ac4b2d064cc32f6d54
+  requires_dist:
+  - selectolax<0.4,>=0.3.21
   requires_python: '>=3.8'
   editable: true
 - kind: conda
@@ -1654,6 +1660,34 @@ packages:
   - pkg:pypi/ruff?source=hash-mapping
   size: 6337919
   timestamp: 1726264087517
+- kind: pypi
+  name: selectolax
+  version: 0.3.21
+  url: https://files.pythonhosted.org/packages/01/15/a3df57f402ea9958a1c965302531e756a32ce74fcdd890068f2e105717c7/selectolax-0.3.21-cp312-cp312-win_amd64.whl
+  sha256: d38fc69f3c4b06f233e07adbca0e3d58aecc3cdb3d9a72436f64fc0c6d8fa30f
+  requires_dist:
+  - cython==0.29.36 ; extra == 'cython'
+- kind: pypi
+  name: selectolax
+  version: 0.3.21
+  url: https://files.pythonhosted.org/packages/23/34/f1c16a74c422b9991928d726e837f70ed26be4f06fb37dfbd6304a094b16/selectolax-0.3.21-cp312-cp312-macosx_10_9_x86_64.whl
+  sha256: 2a3bdb30f63ac192058070190af887b05e15a0c45d082a86fdd38af96b65a6e0
+  requires_dist:
+  - cython==0.29.36 ; extra == 'cython'
+- kind: pypi
+  name: selectolax
+  version: 0.3.21
+  url: https://files.pythonhosted.org/packages/63/88/e38f96103e1e63f8aed1431eac9d3d0e7923b4b0bf0aa5ee39665466ddc6/selectolax-0.3.21-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+  sha256: 72e0dc806998f2108e65bbaf1f4a1d2a5079a9fc6c4ee848d3da2cbacef47d8c
+  requires_dist:
+  - cython==0.29.36 ; extra == 'cython'
+- kind: pypi
+  name: selectolax
+  version: 0.3.21
+  url: https://files.pythonhosted.org/packages/a9/be/85dc69a88eb8f6b6c20968f6982bec1d4899325541939d43851b677f3bf6/selectolax-0.3.21-cp312-cp312-macosx_10_9_universal2.whl
+  sha256: f07fe837da86fcfe7223652c311f55f2062923ad9fbe12142cf8d948539a35a0
+  requires_dist:
+  - cython==0.29.36 ; extra == 'cython'
 - kind: conda
   name: setuptools
   version: 73.0.1
