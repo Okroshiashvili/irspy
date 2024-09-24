@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - dev
   pull_request:
     branches:
       - main
@@ -61,7 +62,7 @@ jobs:
   # Publish to PyPI on every pull request to `main` branch
   publish-to-pypi:
     name: Publish 📦 to PyPI
-    if: github.repository_owner == 'Okroshiashvili' && github.event_name == 'pull_request' && github.ref == 'refs/heads/main'
+    if: github.event_name == 'pull_request' && github.ref == 'refs/heads/main'
     needs:
       - build
     runs-on: ubuntu-latest
