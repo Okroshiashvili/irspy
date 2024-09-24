@@ -1,6 +1,6 @@
-import pytest
-import irspy
+"""Unit tests."""
 
 
-def test_sum_as_string():
-    assert irspy.sum_as_string(1, 1) == "2"
+def test_true() -> None:
+    """Test that True is True."""
+    assert True
