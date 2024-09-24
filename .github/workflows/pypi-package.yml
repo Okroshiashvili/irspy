@@ -38,7 +38,7 @@ jobs:
           name: python-package-distributions
           path: dist/
 
-  # Publish to TestPyPI on every pull request to `dev` branch
+  # Publish to TestPyPI on every `push` to `dev` branch
   publish-to-test-pypi:
     name: Publish 📦 to TestPyPI
     if: github.event_name == 'push' && github.ref == 'refs/heads/dev'
