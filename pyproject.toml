@@ -28,6 +28,7 @@ keywords = [
     "irs form 990",
     "990 data",
     "irs form 990 data",
+    "irspy",
 ]
 readme = "README.md"
 license = { text = "MIT License" }
@@ -68,7 +69,8 @@ ruff_lint = "ruff check src/irspy/ tests/ --fix"
 ruff_fmt = "ruff format src/irspy/ tests/"
 pylint_lint = "pylint src/irspy/ tests/"
 type_check = "mypy src/irspy/ tests/"
-python_test = "pytest tests/"
+coverage_test = "coverage run -m pytest tests/"
+coverage_report = "coverage html -d coverages"
 
 # Main Tasks
 lint = { depends_on = [
@@ -78,7 +80,10 @@ lint = { depends_on = [
     "pylint_lint",
     "type_check",
 ] }
-test = { depends_on = ["python_test"] }
+test = { depends_on = ["coverage_test", "coverage_report"] }
+build = "hatch clean && hatch build"
+publish = "hatch publish "
+
 
 ### Pixi Dependencies   ###
 [tool.pixi.dependencies]
@@ -89,3 +94,4 @@ pylint = ">=3.2.7,<4"
 mypy = ">=1.11.2,<2"
 pytest = ">=8.3.2,<9"
 check-wheel-contents = ">=0.6.0,<0.7"
+coverage = ">=7.6.1,<8"
